@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="lcd main">
+    <p>loaded {{ insertedmoney }}</p>
+    <p *ngIf="itemArray[selectedItemId]">
+      chosen {{ itemArray[selectedItemId].name }}
+    </p>
+  </div>
+
+  <div class="lcd">
+    <p>{{ lcdSwitch }}</p>
+  </div>
+
+  <div class="wrap">
+    <div *ngFor="let item of itemArray">
+      <button *ngIf="item.quantity > 0" class="item" (click)="chosen(item.id)">
+        Get {{ item.name | uppercase }}: {{ item.price }}$
+      </button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <button
+      class="coin"
+      *ngFor="let item of dolarCoins"
+      (click)="insertCoin(item.value)"
+    >
+      {{ item.name }}
+    </button>
+  </div>
+
+  <div></div>
+
+  <br />
+  <br />
+  <div class="wrap">
+    <button class="but" (click)="buy()">buy</button>
+    <button class="but" (click)="returnM()">return money</button>
+  </div>
+</div>
+<br />
+<label> Service Panel </label>
+<button (click)="showpanel()">Open</button>
+<div *ngIf="show" class="servicepanel">
+  <form [formGroup]="servicePanel" (ngSubmit)="addCoins()">
+    <br />
+    <label> Coin </label>
+    <select formControlName="coin">
+      <option *ngFor="let item of restcoins" [ngValue]="item.id">{{
+        item.name
+      }}</option>
+    </select>
+    <label> Quantity </label>
+    <input type="number" formControlName="quantity" /> <br /><br />
+
+    <label> Item </label>
+    <select formControlName="items">
+      <option *ngFor="let item of itemArray" [ngValue]="item.id">{{
+        item.name
+      }}</option>
+    </select>
+    <label> Quantity </label>
+    <input type="number" formControlName="quantityitems" /><br />
+    <label class="error" *ngIf="!this.servicePanel.valid"
+      >Only decimal numbers are allowed</label
+    ><br />
+    <input type="submit" value="Submit" />
+  </form>
+
+  <br />
+  <div *ngFor="let item of restcoins">{{ item.name }} {{ item.counter }}</div>
+  <br />
+</div>
+

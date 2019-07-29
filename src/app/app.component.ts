@@ -32,9 +32,9 @@ export class AppComponent {
 
     this.servicePanel = this.formbuilder.group({
       coin:[0],
-      quantity:[0,Validators.pattern('[0-9 ]*')],
+      quantity:[0,Validators.pattern('[-0-9 ]*')],
       items:[0],
-      quantityitems:[0,Validators.pattern('[0-9]*')]
+      quantityitems:[0,Validators.pattern('[-0-9]*')]
     });
 
     for (let i = 0; i < this.names.length; i++) {

@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { Item } from "./item";
 import { Coin } from "./coin";
-import { FormGroup,FormBuilder, Validators } from "@angular/forms";
+import { FormGroup,FormBuilder, Validators,  } from "@angular/forms";
 
 @Component({
   selector: "app-root",
@@ -9,7 +9,7 @@ import { FormGroup,FormBuilder, Validators } from "@angular/forms";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
-  title = "Vending-machine";
+  title = "Vending-Machine";
 
   itemArray: Item[] = [];
   dolarCoins: Coin[] = [];
